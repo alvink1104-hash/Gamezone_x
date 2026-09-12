@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="GameZone X — a complete gaming hub for games, guides, news, platforms and gaming discovery.">
+<title>GameZone X — Gaming Hub</title>
+<style>
+:root{
+ --bg:#050505;--panel:#101114;--panel2:#17191d;--text:#fff;--muted:#a8adb7;
+ --line:#292d35;--accent:#fff;--blue:#2f7cff;--green:#39d98a;--red:#ff4d4d;
+ --shadow:0 20px 70px rgba(0,0,0,.35);--radius:18px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#343a45 0,#0a0b0e 34%,#050505 75%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,8,10,.88);backdrop-filter:blur(18px);border-bottom:1px solid #24272d}
+.nav{max-width:1400px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 22px}
+.logo{font-weight:900;letter-spacing:-1.5px;font-size:24px;white-space:nowrap}.logo span{font-weight:500;color:#b9bec8}
+.navlinks{display:flex;gap:4px;overflow:auto;flex:1}.navlinks a{padding:10px 13px;border-radius:999px;color:#c5cad2;white-space:nowrap;font-size:14px}.navlinks a:hover{background:#1b1e24;color:#fff}
+.navbtn{border:1px solid #30343b;background:#15171b;color:#fff;border-radius:999px;padding:10px 14px}.menu{display:none}
+.hero{min-height:590px;display:flex;align-items:end;background:
+ linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.3) 58%,rgba(0,0,0,.85)),
+ radial-gradient(circle at 75% 25%,#384b76 0,#182039 22%,transparent 48%),
+ linear-gradient(135deg,#1a1d25,#08090c 65%);border-bottom:1px solid #252830}
+.heroInner{max-width:1400px;width:100%;margin:auto;padding:90px 22px 70px}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#c6cbd5;font-weight:800}
+.hero h1{font-size:clamp(42px,7vw,92px);line-height:.92;letter-spacing:-5px;max-width:800px;margin:18px 0}.hero p{max-width:690px;color:#c4c8d0;font-size:18px;line-height:1.6}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:0;border-radius:999px;padding:13px 20px;font-weight:800;background:#fff;color:#000}.btn.secondary{background:#20242b;color:#fff;border:1px solid #3a3f48}.btn:hover{transform:translateY(-1px)}
+.container{max-width:1400px;margin:auto;padding:50px 22px}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}.sectionHead h2{margin:0;font-size:30px;letter-spacing:-1px}.sectionHead p{margin:5px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{background:linear-gradient(145deg,#15171c,#0d0e11);border:1px solid #272a31;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.2s}.card:hover{transform:translateY(-5px);border-color:#484d57}
+.art{height:210px;display:flex;align-items:end;padding:18px;position:relative;overflow:hidden;background:linear-gradient(135deg,#202631,#090a0c)}.art:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 70% 25%,rgba(255,255,255,.22),transparent 25%),linear-gradient(130deg,transparent 20%,rgba(255,255,255,.08) 20%,transparent 45%);transform:rotate(-12deg)}
+.art b{position:relative;font-size:28px;letter-spacing:-1.5px;max-width:90%}.cardBody{padding:16px}.meta{font-size:12px;color:#969ca8}.card h3{margin:5px 0 7px;font-size:19px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{font-size:11px;background:#20232a;border:1px solid #2e323a;color:#cbd0d8;padding:5px 8px;border-radius:999px}
+.featureGrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:16px}.feature{min-height:310px;padding:26px;border:1px solid #292d35;border-radius:var(--radius);display:flex;flex-direction:column;justify-content:end;background:linear-gradient(145deg,#242936,#090a0d);position:relative;overflow:hidden}.feature:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.16),transparent 30%);pointer-events:none}.feature>*{position:relative;z-index:1}.feature h3{font-size:30px;max-width:650px;margin:8px 0}.feature p{color:#b5bac3;max-width:620px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;margin:20px 0}.input,.select{width:100%;background:#0f1115;border:1px solid #2d3139;color:#fff;border-radius:13px;padding:14px 15px;outline:none}.input:focus,.select:focus{border-color:#6b7280}
+.libraryBar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0;color:#aeb3bd}.count{font-weight:800;color:#fff}
+.gameGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.game{background:#0e1013;border:1px solid #24272d;border-radius:14px;overflow:hidden;min-width:0}.game:hover{border-color:#4a505b}.gameArt{height:145px;padding:12px;display:flex;align-items:end;background:linear-gradient(135deg,#26313d,#0c0e11)}.gameArt strong{font-size:16px;line-height:1.05}.gameInfo{padding:12px}.gameInfo .title{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gameInfo .small{font-size:11px;color:#9298a3;margin-top:5px}.gameActions{display:flex;gap:7px;margin-top:10px}.iconBtn{flex:1;border:1px solid #30343c;background:#17191e;color:#fff;border-radius:9px;padding:8px;font-size:12px}
+.news{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px}.newsCard{padding:22px;min-height:220px;border-radius:var(--radius);border:1px solid #292d35;background:linear-gradient(145deg,#15181e,#0b0c0f)}.newsCard .date{color:#7f8793;font-size:12px}.newsCard h3{font-size:23px;margin:9px 0}.newsCard p{color:#aab0ba;line-height:1.5}
+.platforms{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.platform{padding:22px;border:1px solid #292d35;border-radius:16px;background:#0e1013;text-align:center;font-weight:900}.platform span{display:block;color:#8f96a2;font-weight:500;font-size:12px;margin-top:6px}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:18px}.modal.open{display:flex}.modalBox{max-width:850px;width:100%;max-height:90vh;overflow:auto;background:#111318;border:1px solid #343943;border-radius:24px;box-shadow:0 30px 100px #000}.modalTop{height:260px;padding:25px;display:flex;align-items:end;background:linear-gradient(135deg,#283244,#0a0b0e)}.modalTop h2{font-size:42px;letter-spacing:-2px;margin:0}.modalBody{padding:24px}.close{float:right;border:1px solid #3b4049;background:#1a1c21;color:#fff;border-radius:50%;width:40px;height:40px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.stat{padding:15px;border:1px solid #2b2f37;border-radius:12px;background:#0c0e11}.stat b{display:block;font-size:20px}.stat span{color:#858c98;font-size:11px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:#fff;color:#000;padding:12px 18px;border-radius:999px;font-weight:800;z-index:200;transition:.25s}.toast.show{transform:translateX(-50%) translateY(0)}
+footer{border-top:1px solid #25282f;margin-top:40px;background:#08090b}.footer{max-width:1400px;margin:auto;padding:45px 22px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:30px}.footer h4{margin:0 0 10px}.footer a,.footer p{display:block;color:#8e95a0;margin:7px 0;font-size:13px}.fine{border-top:1px solid #24272d;padding-top:18px;margin-top:18px;color:#6f7681;font-size:11px;line-height:1.5}
+.empty{padding:45px;text-align:center;border:1px dashed #3a3e46;border-radius:16px;color:#9ca3af;grid-column:1/-1}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.gameGrid{grid-template-columns:repeat(4,1fr)}.platforms{grid-template-columns:repeat(3,1fr)}.filters{grid-template-columns:2fr 1fr 1fr}.featureGrid,.news{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.navlinks{display:none}.menu{display:block}.hero{min-height:540px}.hero h1{letter-spacing:-3px}.grid,.gameGrid{grid-template-columns:repeat(2,1fr)}.featureGrid,.news,.footer{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters .wide{grid-column:1/-1}.platforms{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.art{height:180px}.nav{padding:12px 14px}.container{padding:38px 14px}.heroInner{padding:70px 14px 55px}}
+</style>
+<style>.catalog-status{margin:12px auto;padding:10px 14px;max-width:1200px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.78);font-size:.9rem}</style></head>
+<body>
+<header class="topbar">
+<nav class="nav">
+<a class="logo" href="#home">GAME<span>ZONE</span> X</a>
+<div class="navlinks">
+<a href="#games">Games</a><a href="#news">News</a><a href="#guides">Guides</a><a href="#platforms">Platforms</a><a href="#features">Features</a><a href="#support">Support</a>
+</div>
+<button class="navbtn" onclick="document.querySelector('#search').focus()">Search</button>
+</nav>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="heroInner">
+<div class="eyebrow">THE GAMING HUB • DISCOVER • PLAY • EXPLORE</div>
+<h1>Play your way.</h1>
+<p>Discover thousands of games across PlayStation, Xbox, PC, Nintendo and classic platforms. Search, filter, compare, save favourites and find your next game.</p>
+<div class="actions"><a class="btn" href="#games">Explore games</a><button class="btn secondary" onclick="randomGame()">Surprise me</button></div>
+</div>
+</section>
+
+<section class="container" id="features">
+<div class="featureGrid">
+<div class="feature"><div class="eyebrow">GAME DISCOVERY</div><h3>One place for your entire gaming universe.</h3><p>Fast search, powerful filters, favourites, recently viewed games and detailed game cards.</p><a class="btn" style="width:max-content" href="#games">Browse library</a></div>
+<div class="feature"><div class="eyebrow">COMPARE</div><h3>Compare games.</h3><p>Put up to three games side-by-side.</p><button class="btn secondary" onclick="showToast('Open a game and add it to Compare')">How it works</button></div>
+<div class="feature"><div class="eyebrow">PERSONAL</div><h3>Your favourites.</h3><p>Your saved games stay on this device.</p><button class="btn secondary" onclick="showFavorites()">View favourites</button></div>
+</div>
+</section>
+
+<section class="container" id="games">
+<div class="sectionHead"><div><h2>Game Library</h2><p>Search the live catalog or browse the featured collection.</p></div><div class="count" id="status">Loading catalog…</div></div>
+<div class="filters">
+<input id="search" class="input wide" placeholder="🔎 Search games, publishers, genres or platforms…" autocomplete="off">
+<select id="platform" class="select"><option value="">All platforms</option></select>
+<select id="genre" class="select"><option value="">All genres</option></select>
+<select id="year" class="select"><option value="">All years</option></select>
+<select id="sort" class="select"><option value="popular">Featured</option><option value="az">A–Z</option><option value="newest">Newest</option><option value="oldest">Oldest</option></select>
+</div>
+<div class="libraryBar"><span><span id="shown">0</span> results</span><span>Tip: try <b>Mario</b>, <b>GTA</b>, <b>PlayStation</b>, <b>Racing</b> or <b>1998</b>.</span></div>
+<div id="gameGrid" class="gameGrid"></div>
+<div style="text-align:center;margin-top:22px"><button id="more" class="btn secondary" onclick="loadMore()">Load more</button></div>
+</section>
+
+<section class="container" id="news">
+<div class="sectionHead"><div><h2>Gaming News</h2><p>GameZone X editorial cards — replace these with your own articles as the site grows.</p></div></div>
+<div class="news">
+<article class="newsCard"><div class="date">FEATURE</div><h3>What should you play next?</h3><p>Use the library filters to jump between action, racing, RPG, sports, strategy and classic games.</p><a href="#games">Explore →</a></article>
+<article class="newsCard"><div class="date">DISCOVERY</div><h3>Build your backlog</h3><p>Save favourites on your device and use recently viewed games to keep track of what caught your eye.</p><a href="#games">Build it →</a></article>
+<article class="newsCard"><div class="date">COMMUNITY</div><h3>GameZone Guides</h3><p>Start a guide collection for settings, beginner tips, collectibles and game-specific strategies.</p><a href="#guides">Guides →</a></article>
+</div>
+</section>
+
+<section class="container" id="guides">
+<div class="sectionHead"><div><h2>Guides & Tips</h2><p>Safe, game-focused tips for getting better.</p></div></div>
+<div class="grid">
+<article class="card"><div class="cardBody"><div class="eyebrow">SETTINGS</div><h3>Controller setup</h3><p class="meta">Tune sensitivity, deadzones and layouts to your game and play style.</p></div></article>
+<article class="card"><div class="cardBody"><div class="eyebrow">PERFORMANCE</div><h3>Reduce lag</h3><p class="meta">Use wired networking when possible, close background apps and check your display settings.</p></div></article>
+<article class="card"><div class="cardBody"><div class="eyebrow">DISCOVERY</div><h3>Find your genre</h3><p class="meta">Try different genres and use your favourites to build a personal shortlist.</p></div></article>
+<article class="card"><div class="cardBody"><div class="eyebrow">BACKLOG</div><h3>Organise your games</h3><p class="meta">Use favourites and recently viewed to keep your next games easy to find.</p></div></article>
+</div>
+</section>
+
+<section class="container" id="platforms">
+<div class="sectionHead"><div><h2>Platforms</h2><p>Browse records from generations of gaming.</p></div></div>
+<div class="platforms">
+<div class="platform">PlayStation<span>PS • PS2 • PS3 • PS4 • PSP • Vita</span></div>
+<div class="platform">Xbox<span>Xbox • Xbox 360 • Xbox One</span></div>
+<div class="platform">PC<span>PC gaming</span></div>
+<div class="platform">Nintendo<span>NES • SNES • N64 • DS • Wii • Wii U</span></div>
+<div class="platform">Handheld<span>Game Boy • GBA • 3DS • PSP • Vita</span></div>
+<div class="platform">Classic<span>Arcade & retro systems</span></div>
+</div>
+</section>
+
+<section class="container" id="support">
+<div class="feature"><div class="eyebrow">GAMEZONE X</div><h3>Built for gamers.</h3><p>GameZone X is a fan-made discovery site. It is not affiliated with Sony, PlayStation, Microsoft, Nintendo, or any game publisher.</p><p class="meta">Catalog attribution: the legacy database is provided by the open-source Videogames-Database project and covers 11,364 records across 32 platforms.</p></div>
+</section>
+</main>
+
+<footer>
+<div class="footer">
+<div><div class="logo">GAME<span>ZONE</span> X</div><p>Your independent gaming discovery hub.</p></div>
+<div><h4>Explore</h4><a href="#games">Games</a><a href="#news">News</a><a href="#guides">Guides</a></div>
+<div><h4>Discover</h4><a href="#platforms">Platforms</a><a href="#features">Features</a><a href="#games">Favourites</a></div>
+<div><h4>Help</h4><a href="#support">Support</a><a href="#home">Back to top</a></div>
+<div><h4>Credits</h4><a href="https://github.com/bocaletto-luca/Videogames-Database" target="_blank" rel="noopener">Open game database</a></div>
+</div>
+<div class="container fine">GameZone X is an independent fan project. Game names and trademarks belong to their respective owners. This site does not sell games or reproduce publisher artwork.</div>
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modalBox">
+<div class="modalTop"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">Game</h2></div>
+<div class="modalBody"><div class="meta" id="modalMeta"></div><div class="stats" id="modalStats"></div><p id="modalText"></p><div class="actions"><button class="btn" id="favModal">Add to favourites</button><button class="btn secondary" id="compareModal">Add to compare</button></div></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA_URL='https://raw.githubusercontent.com/bocaletto-luca/Videogames-Database/main/all_platform.sql';
+const fallback=[
+["Fortnite","Action","PC / PS4 / PS5 / Xbox One / Xbox Series","Epic Games",2017],
+["Grand Theft Auto V","Action","PC / PS3 / PS4 / Xbox 360 / Xbox One","Rockstar Games",2013],
+["Minecraft","Sandbox","PC / PS4 / PS5 / Xbox / Switch","Mojang",2011],
+["Roblox","Sandbox","PC / Xbox / PlayStation / Mobile","Roblox",2006],
+["Red Dead Redemption 2","Action","PC / PS4 / Xbox One","Rockstar Games",2018],
+["The Witcher 3: Wild Hunt","RPG","PC / PS4 / PS5 / Xbox / Switch","CD Projekt",2015],
+["Elden Ring","RPG","PC / PS4 / PS5 / Xbox","FromSoftware",2022],
+["God of War","Action","PS4 / PS5 / PC","Santa Monica Studio",2018],
+["Marvel's Spider-Man","Action","PS4 / PS5 / PC","Insomniac Games",2018],
+["Gran Turismo 7","Racing","PS4 / PS5","Polyphony Digital",2022],
+["Forza Horizon 5","Racing","PC / Xbox","Playground Games",2021],
+["Rocket League","Sports","PC / PlayStation / Xbox / Switch","Psyonix",2015],
+["Apex Legends","Shooter","PC / PlayStation / Xbox / Switch","Respawn",2019],
+["Overwatch","Shooter","PC / PlayStation / Xbox","Blizzard",2016],
+["The Last of Us","Action","PS3 / PS4 / PS5","Naughty Dog",2013],
+["The Last of Us Part II","Action","PS4 / PS5","Naughty Dog",2020],
+["Horizon Zero Dawn","RPG","PS4 / PC","Guerrilla",2017],
+["Ghost of Tsushima","Action","PS4 / PS5 / PC","Sucker Punch",2020],
+["Spider-Man 2","Action","PS5 / PC","Insomniac Games",2023],
+["Cyberpunk 2077","RPG","PC / PS4 / PS5 / Xbox","CD Projekt",2020],
+["Call of Duty: Black Ops","Shooter","PC / PS3 / Xbox 360","Treyarch",2010],
+["Call of Duty: Modern Warfare","Shooter","PC / PS4 / Xbox One","Infinity Ward",2019],
+["EA Sports FC 26","Sports","PC / PlayStation / Xbox / Switch","EA",2025],
+["NBA 2K26","Sports","PC / PlayStation / Xbox / Switch","2K",2025],
+["Resident Evil 4","Horror","PC / PlayStation / Xbox","Capcom",2023],
+["Silent Hill 2","Horror","PC / PS5","Bloober Team",2024],
+["Hogwarts Legacy","RPG","PC / PlayStation / Xbox / Switch","Avalanche",2023],
+["Baldur's Gate 3","RPG","PC / PS5 / Xbox","Larian Studios",2023],
+["Hades","Roguelike","PC / PlayStation / Xbox / Switch","Supergiant",2020],
+["Sekiro: Shadows Die Twice","Action","PC / PS4 / Xbox One","FromSoftware",2019],
+["Dark Souls","RPG","PC / PS3 / Xbox 360","FromSoftware",2011],
+["Dark Souls III","RPG","PC / PS4 / Xbox One","FromSoftware",2016],
+["Bloodborne","RPG","PS4","FromSoftware",2015],
+["Uncharted 4: A Thief's End","Action","PS4 / PS5 / PC","Naughty Dog",2016],
+["Death Stranding","Action","PS4 / PS5 / PC","Kojima Productions",2019],
+["Assassin's Creed IV: Black Flag","Action","PC / PS3 / PS4 / Xbox","Ubisoft",2013],
+["Assassin's Creed Valhalla","Action","PC / PS4 / PS5 / Xbox","Ubisoft",2020],
+["Far Cry 5","Shooter","PC / PS4 / Xbox One","Ubisoft",2018],
+["Watch Dogs 2","Action","PC / PS4 / Xbox One","Ubisoft",2016],
+["Need for Speed Heat","Racing","PC / PS4 / Xbox One","EA",2019],
+["Need for Speed Unbound","Racing","PC / PS5 / Xbox Series","EA",2022],
+["The Crew Motorfest","Racing","PC / PS4 / PS5 / Xbox","Ubisoft",2023],
+["F1 25","Racing","PC / PS5 / Xbox Series","EA",2025],
+["Fall Guys","Party","PC / PlayStation / Xbox / Switch","Mediatonic",2020],
+["Among Us","Social","PC / PlayStation / Xbox / Switch","Innersloth",2018],
+["Terraria","Sandbox","PC / PlayStation / Xbox / Switch","Re-Logic",2011],
+["Stardew Valley","Simulation","PC / PlayStation / Xbox / Switch","ConcernedApe",2016],
+["The Sims 4","Simulation","PC / PlayStation / Xbox","EA",2014],
+["Civilization VI","Strategy","PC / PlayStation / Xbox / Switch","2K",2016],
+["Age of Empires II","Strategy","PC / Xbox","Xbox Game Studios",1999],
+["Portal 2","Puzzle","PC / PlayStation / Xbox","Valve",2011],
+["Half-Life 2","Shooter","PC / Xbox","Valve",2004],
+["Counter-Strike","Shooter","PC","Valve",2000],
+["Dota 2","Strategy","PC","Valve",2013],
+["League of Legends","Strategy","PC","Riot Games",2009],
+["Valorant","Shooter","PC","Riot Games",2020],
+["The Elder Scrolls V: Skyrim","RPG","PC / PlayStation / Xbox / Switch","Bethesda",2011],
+["Fallout 4","RPG","PC / PS4 / Xbox One","Bethesda",2015],
+["Starfield","RPG","PC / Xbox Series","Bethesda",2023],
+["Halo Infinite","Shooter","PC / Xbox","Xbox Game Studios",2021],
+["Gears 5","Shooter","PC / Xbox","Xbox Game Studios",2019],
+["Sea of Thieves","Adventure","PC / Xbox / PlayStation","Rare",2018],
+["Forza Motorsport","Racing","PC / Xbox","Turn 10",2023],
+["Super Mario Bros.","Platform","NES","Nintendo",1985],
+["Super Mario 64","Platform","N64","Nintendo",1996],
+["Super Mario Odyssey","Platform","Switch","Nintendo",2017],
+["Mario Kart 8 Deluxe","Racing","Switch","Nintendo",2017],
+["The Legend of Zelda: Ocarina of Time","Adventure","N64","Nintendo",1998],
+["The Legend of Zelda: Breath of the Wild","Adventure","Wii U / Switch","Nintendo",2017],
+["The Legend of Zelda: Tears of the Kingdom","Adventure","Switch","Nintendo",2023],
+["Pokémon Red","RPG","Game Boy","Nintendo",1996],
+["Pokémon Scarlet","RPG","Switch","Nintendo",2022],
+["Animal Crossing: New Horizons","Simulation","Switch","Nintendo",2020],
+["Super Smash Bros. Ultimate","Fighting","Switch","Nintendo",2018],
+["Tetris","Puzzle","Game Boy / Multiple","Nintendo",1989]
+];
+
+let games=[], filtered=[], shownCount=40, current=null, compare=[];
+const $=id=>document.getElementById(id);
+const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function normalize(rows){return rows.map((r,i)=>({id:i+1,name:String(r[0]||'Unknown'),genre:String(r[1]||'Misc'),platform:String(r[2]||'Unknown'),publisher:String(r[3]||'Unknown'),year:Number(r[4])||0})).filter(x=>x.name&&x.name!=='Unknown')}
+function sqlParse(text){
+  const rows = [];
+  const re = /\(\s*(\d+)\s*,\s*'((?:\\'|[^'])*)'\s*,\s*'((?:\\'|[^'])*)'\s*,\s*(\d{4}|NULL)\s*,\s*'((?:\\'|[^'])*)'\s*,\s*'((?:\\'|[^'])*)'\s*\)/g;
+  const unesc = s => s.replace(/\\'/g, "'").replace(/\\\\/g, "\\");
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    rows.push({title:unesc(m[2]),genre:unesc(m[3]),year:m[4]==="NULL"?0:Number(m[4]),platform:unesc(m[5]),publisher:unesc(m[6])});
+  }
+  return rows;
+}
+function seed(){games=normalize(fallback); buildFilters(); apply();}
+async function loadCatalog(){
+ seed();
+ try{
+  const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),8000);
+  const r=await fetch(DATA_URL,{signal:ctl.signal,cache:'no-store'}); clearTimeout(t);
+  if(!r.ok) throw new Error('database unavailable');
+  const text=await r.text(); const parsed=sqlParse(text);
+  if(parsed.length>500){games=normalize([...parsed,...fallback]); const seen=new Set(); games=games.filter(g=>{const k=(g.name+'|'+g.platform).toLowerCase();if(seen.has(k))return false;seen.add(k);return true}); buildFilters(); apply(); showToast('Live catalog loaded');}
+ }catch(e){showToast('Using built-in catalog — tap refresh later to retry');}
+}
+function buildFilters(){
+ const platforms=[...new Set(games.flatMap(g=>g.platform.split('/').map(x=>x.trim())).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ const genres=[...new Set(games.map(g=>g.genre).filter(Boolean))].sort();
+ const years=[...new Set(games.map(g=>g.year).filter(y=>y>0))].sort((a,b)=>b-a);
+ $('platform').innerHTML='<option value="">All platforms</option>'+platforms.slice(0,120).map(x=>`<option>${escapeHTML(x)}</option>`).join('');
+ $('genre').innerHTML='<option value="">All genres</option>'+genres.map(x=>`<option>${escapeHTML(x)}</option>`).join('');
+ $('year').innerHTML='<option value="">All years</option>'+years.map(x=>`<option>${x}</option>`).join('');
+}
+function apply(){
+ const q=$('search').value.trim().toLowerCase(), p=$('platform').value.toLowerCase(), g=$('genre').value.toLowerCase(), y=$('year').value;
+ let arr=games.filter(x=>(!q||[x.name,x.genre,x.platform,x.publisher,String(x.year)].join(' ').toLowerCase().includes(q))&&(!p||x.platform.toLowerCase().includes(p))&&(!g||x.genre.toLowerCase()===g)&&(!y||String(x.year)===y));
+ const s=$('sort').value;
+ if(s==='az')arr.sort((a,b)=>a.name.localeCompare(b.name)); else if(s==='newest')arr.sort((a,b)=>b.year-a.year); else if(s==='oldest')arr.sort((a,b)=>a.year-b.year);
+ filtered=arr; shownCount=40; render();
+}
+function render(){
+ const slice=filtered.slice(0,shownCount);
+ $('shown').textContent=filtered.length.toLocaleString();
+ $('status').textContent=games.length.toLocaleString()+' records';
+ $('gameGrid').innerHTML=slice.length?slice.map(gameCard).join(''):'<div class="empty">No games found. Try another search or remove a filter.</div>';
+ $('more').style.display=shownCount<filtered.length?'inline-block':'none';
+}
+function colorFor(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%360;return `linear-gradient(135deg,hsl(${h} 45% 28%),hsl(${(h+70)%360} 42% 11%))`}
+function gameCard(x){
+ const fav=JSON.parse(localStorage.getItem('gzFav')||'[]').includes(x.name);
+ return `<article class="game"><div class="gameArt" style="background:${colorFor(x.name)}"><strong>${escapeHTML(x.name)}</strong></div><div class="gameInfo"><div class="title">${escapeHTML(x.name)}</div><div class="small">${escapeHTML(x.genre)} • ${x.year||'Year N/A'}</div><div class="gameActions"><button class="iconBtn" onclick='openGame(${JSON.stringify(x).replace(/'/g,"&#39;")})'>Details</button><button class="iconBtn" onclick='toggleFav(${JSON.stringify(x.name)})'>${fav?'★':'☆'}</button></div></div></article>`
+}
+function openGame(x){current=x;$('modalTitle').textContent=x.name;$('modalMeta').textContent=`${x.genre} • ${x.platform} • ${x.publisher}`;$('modalText').textContent=`${x.name} is listed in the GameZone X catalog. Use the filters to discover more games from the same genre, platform or release period.`;$('modalStats').innerHTML=`<div class="stat"><b>${x.year||'—'}</b><span>Release year</span></div><div class="stat"><b>${escapeHTML(x.genre)}</b><span>Genre</span></div><div class="stat"><b>${escapeHTML(x.platform)}</b><span>Platform</span></div><div class="stat"><b>${escapeHTML(x.publisher)}</b><span>Publisher</span></div>`;$('favModal').onclick=()=>toggleFav(x.name);$('compareModal').onclick=()=>addCompare(x);$('modal').classList.add('open');}
+function closeModal(){$('modal').classList.remove('open')}
+function toggleFav(name){let a=JSON.parse(localStorage.getItem('gzFav')||'[]');a=a.includes(name)?a.filter(x=>x!==name):[...a,name];localStorage.setItem('gzFav',JSON.stringify(a));render();showToast(a.includes(name)?'Added to favourites':'Removed from favourites')}
+function showFavorites(){const a=JSON.parse(localStorage.getItem('gzFav')||'[]');if(!a.length){showToast('No favourites yet — open a game and tap ☆');return} $('search').value=''; filtered=games.filter(x=>a.includes(x.name));shownCount=40;render();location.hash='games'}
+function addCompare(x){if(compare.find(c=>c.name===x.name)){showToast('Already in compare');return}if(compare.length>=3){showToast('Compare is limited to 3 games');return}compare.push(x);showToast(`${x.name} added to compare (${compare.length}/3)`)}
+function randomGame(){if(!games.length)return;openGame(games[Math.floor(Math.random()*games.length)])}
+function loadMore(){shownCount+=40;render()}
+function showToast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>el.classList.remove('show'),2400)}
+$('search').addEventListener('input',apply);$('platform').addEventListener('change',apply);$('genre').addEventListener('change',apply);$('year').addEventListener('change',apply);$('sort').addEventListener('change',apply);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+loadCatalog();
+</script>
+<div id="catalogStatus" class="catalog-status">Loading 10,000+ game catalog…</div>
+<script>
+(function(){
+  const URL="https://raw.githubusercontent.com/bocaletto-luca/Videogames-Database/main/all_platform.sql";
+  async function load10K(){
+    const box=document.getElementById("catalogStatus");
+    try{
+      const r=await fetch(URL,{cache:"no-store"});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      const data=sqlParse(await r.text());
+      if(!data.length) throw new Error("No games parsed");
+      window.GZX10K=data;
+      if(box) box.textContent=data.length.toLocaleString()+"+ game records loaded. Search and filters are ready.";
+      if(typeof window.setCatalog==="function") window.setCatalog(data);
+      else if(typeof window.loadCatalog==="function") window.loadCatalog(data);
+      else if(typeof window.renderGames==="function") window.renderGames(data);
+      else { if(Array.isArray(window.catalog)) window.catalog=data; if(Array.isArray(window.games)) window.games=data; if(typeof window.render==="function") window.render(); }
+    }catch(e){
+      console.warn("Large catalog unavailable:",e);
+      if(box) box.textContent="Built-in catalog active. The 10,000+ online catalog can be loaded when the database is reachable.";
+    }
+  }
+  document.addEventListener("DOMContentLoaded",load10K);
+})();
+</script>
+</body>
+</html>
